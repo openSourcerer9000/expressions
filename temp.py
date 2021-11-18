@@ -1,8 +1,77 @@
 from qgis.core import *
 from qgis.gui import *
-liist = [0.1,0.25,0.5,1,1.5,2,2.5,3,4,5,10,20,40]
+liist = {18: 'EX-44',
+ 17: 'EX-02',
+ 11: 'J01',
+ 19: 'EX-04',
+ 12: 'EX-06',
+ 13: 'EX-08',
+ 14: 'EX-10',
+ 24: 'EX-12',
+ 27: 'EX-14',
+ 29: 'EX-16',
+ 28: 'EX-18',
+ 31: 'EX-20',
+ 35: 'EX-22',
+ 36: 'EX-24',
+ 38: 'EX-26B',
+ 43: 'EX-26C',
+ 42: 'EX-28',
+ 41: 'EX-30',
+ 47: 'OS-05',
+ 48: 'EX-32',
+ 49: 'EX-34',
+ 10: 'OS-01',
+ 25: 'OS-02',
+ 37: 'OS-03',
+ 39: 'EX-26',
+ 40: 'EX-26A',
+ 50: 'OS-04',
+ 9: 'OS-06',
+ 1: 'EX-45',
+ 15: 'EX-01',
+ 16: 'EX-03',
+ 20: 'EX-05',
+ 21: 'EX-07',
+ 22: 'EX-09',
+ 23: 'EX-11',
+ 26: 'EX-16',
+ 30: 'EX-15',
+ 32: 'EX-17',
+ 33: 'EX-19',
+ 34: 'EX-21',
+ 6: 'EX-23',
+ 5: 'EX-25',
+ 4: 'EX-27',
+ 45: 'EX-29',
+ 46: 'EX-33',
+ 51: 'EX-35',
+ 54: 'EX-37',
+ 56: 'EX-39',
+ 3: 'OS-10',
+ 2: 'OS-09',
+ 7: 'EX-36',
+ 8: 'EX-38',
+ 44: 'EX-31',
+ 52: 'EX-42',
+ 53: 'EX-43',
+ 55: 'EX-40',
+ 57: 'EX-41',
+ 58: 'OS-07',
+ 66: 'EP-02',
+ 64: 'EP-04',
+ 63: 'EP-06',
+ 60: 'EP-08',
+ 65: 'EP-01',
+ 62: 'EP-03',
+ 61: 'EP-05',
+ 59: 'EP-07'}
+class smartDict(dict):
+    def __missing__(self, key):
+        return ''
+#liist = smartDict(liist)
+
 
 @qgsfunction(args='auto', group='Custom')
-def lyst(i, feature, parent):
-    return liist[i]
-
+def f(i, feature, parent):
+    return any(['RCP' in i,'HDPE' in i,i=='FL'])

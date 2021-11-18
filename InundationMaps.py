@@ -33,9 +33,12 @@ def atlasPgNm(strng, feature, parent):
     '''replaces 'text<field>_text' with 'text' + to_str("field") + '_text' \n
     to keep fields dynamic'''
     res = re.sub(r'<(.*?)>',lambda x: str(feature[x.group()[1:-1]]),strng)
-    ari = feature["ARI"]
-    ari = 'Harvey' if ari>5000 else f'{ari}-YR'
-    res = res.replace('[ari]',ari)
+    try:
+        ari = feature["ARI"]
+        ari = 'Harvey' if ari>5000 else f'{ari}-YR'
+        res = res.replace('[ari]',ari)
+    except:
+        pass
     return res
     
     #reggie = re.compile("|".join(map(re.escape,r'<(.*)>')))
